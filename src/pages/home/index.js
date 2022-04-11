@@ -2,8 +2,7 @@ import { Box } from "@chakra-ui/react";
 import TextEditor from "../../components/texteditor";
 // import useColor from "../../utils/useColor";
 // import { Gradient } from 'react-gradient';
-import TableSorted from "../../components/tableSorted/index.js";
-import MyEditor from "../../components/myeditor/index.js";
+// import TableSorted from "../../components/tableSorted/index.js";
 
 export default function Home() {
     // const gradients = [
@@ -17,8 +16,7 @@ export default function Home() {
             pt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "8%", base: "8%" }}
             w="100%"
             zIndex={10}>
-            <TableSorted />
-            {/* <MyEditor></MyEditor> */}
+            {/* <TableSorted /> */}
             {/* <Flex
                 // w="85%"
                 // h="100%"
