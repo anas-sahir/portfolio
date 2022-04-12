@@ -11,6 +11,7 @@ export default function TextEditor() {
     const [body, setbody] = useState("");
     function handleBody(e) {
         setbody(e);
+        console.log(body);
     }
 
     return (
@@ -36,8 +37,8 @@ TextEditor.modules = {
         ["link", "image", "video"],
         ["clean"],
         ["code-block"],
-        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-        [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
         [{ 'direction': 'rtl' }],
         [{ 'align': [] }],
     ],

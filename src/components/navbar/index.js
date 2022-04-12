@@ -46,9 +46,9 @@ export default function NavBar() {
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
         >
         </Box>
-        <Wrap
+        <Wrap maxBlockSize={20}
             backdropFilter={"auto"}
-            backdropBlur="4px"
+            backdropBlur="2px"
             h="100%"
             width="15%"
             zIndex={100}
@@ -66,8 +66,8 @@ export default function NavBar() {
                     <ToggleDarkMode />
                 </Box>
             </WrapItem>
-            <WrapItem w="100%">
-                <Box w="100%" align="center">
+            <WrapItem w="100%" >
+                <Box w="100%" align="center" >
 
                     <Avatar size={"2xl"} src={logo}
                         display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
@@ -106,40 +106,24 @@ export default function NavBar() {
             h="8%"
             w="100%"
             backdropFilter={"auto"}
-            backdropBlur="4px"
+            backdropBlur="2px"
             zIndex={100}
             fontWeight={"bold"}
             position="absolute"
-            // backgroundColor={"red"}
-            // align="center"
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
         >
-
             <HStack
-                // justify="center"
-                // backgroundColor={"green"}
                 w="100%"
                 h="100%"
             >
-
-                <Stack w={19 / 20}
+                <Stack w={18 / 20}
                     ml="5%">
-                    <Avatar size={"xs"} src={logo} />
+                    <Avatar size={"sm"} src={logo} />
                 </Stack>
-                <Stack w={1 / 20}>
-                    <Icon size={"xs"} as={AiOutlineMenu} />
+                <Stack w={2 / 20}>
+                    <Icon as={AiOutlineMenu} />
                 </Stack>
             </HStack>
-            {/* <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
-                <Wrap pt={30}
-                    spacing='30px'
-                >
-                    {menu.map((element) => (
-                        <Dash key={element.id} icon={element.icon}
-                            title={element.title}
-                        />))}
-                </Wrap>
-            </WrapItem> */}
         </Box>
     </>);
 }
