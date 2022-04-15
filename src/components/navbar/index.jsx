@@ -46,17 +46,17 @@ export default function NavBar() {
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
         >
         </Box>
-        <Wrap maxBlockSize={20}
+        <Wrap
             backdropFilter={"auto"}
-            backdropBlur="2px"
-            h="100%"
+            backdropBlur="3px"
             width="15%"
             zIndex={100}
             fontWeight={"bold"}
             position="absolute"
             display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
         >
-            <WrapItem w="100%"
+            <WrapItem
+                // h="10px"
                 pt={5}
                 pl={5}
             >
@@ -68,7 +68,6 @@ export default function NavBar() {
             </WrapItem>
             <WrapItem w="100%" >
                 <Box w="100%" align="center"  >
-
                     <Avatar size={"2xl"} src={logo}
                         display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
                     <Avatar size={"xl"} src={logo}
@@ -136,10 +135,10 @@ function Dash({ icon, title, navigateTo }) {
     const { pick } = useColor();
     const navigate = useNavigate();
     return (
-        <WrapItem w="100%" pl={5} >
-            <Wrap align="center"
-                // justify="center"
-                w="90%"
+        <WrapItem w="100%" pl={5} 
+        justifyContent="end">
+            <Wrap
+                w="90%" // weard, but it does the job 😉
                 spacing='20px'
             >
                 <HStack
@@ -147,7 +146,7 @@ function Dash({ icon, title, navigateTo }) {
                     onClick={() => {
                         navigate(navigateTo);
                     }}>
-                    <WrapItem>
+                    <WrapItem >
                         {/* {(icon === "home")
                         ? <AiOutlineHome />
                         : "a"} */}
