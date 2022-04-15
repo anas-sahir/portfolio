@@ -8,22 +8,22 @@ import { Gradient } from 'react-gradient';
 function handleClick(icon) {
     console.log(icon);
     switch (icon) {
-        case BsFacebook.name:
+        case BsFacebook:
             window.open(socialMedia.facebook);
             break;
-        case BsInstagram.name:
+        case BsInstagram:
             window.open(socialMedia.instagram);
             break;
-        case BsTwitter.name:
+        case BsTwitter:
             window.open(socialMedia.twitter);
             break;
-        case BsLinkedin.name:
+        case BsLinkedin:
             window.open(socialMedia.linkedin);
             break;
-        case BsGithub.name:
+        case BsGithub:
             window.open(socialMedia.github);
             break;
-        case SiGmail.name:
+        case SiGmail:
             window.open(socialMedia.gmail, "_blank");
             break;
         default:
@@ -58,9 +58,9 @@ export default function ContactMe() {
                     >
                         <Icon as={icon} w={sicon} h={sicon}
                             // style={{ background: "linear-gradient(45deg, rgba(254,255,0,1) 8%, rgba(15,22,196,1) 36%, rgba(255,165,0,1) 59%, rgba(220,4,235,1) 89%)" }}
-                            onClick={() => { handleClick(icon.name) }} />
+                            onClick={() => { handleClick(icon) }} />
                     </Gradient>
-                        : <Icon as={icon} w="full" h="full" onClick={() => { handleClick(icon.name) }} />}
+                        : <Icon as={icon} w="full" h="full" onClick={() => { handleClick(icon) }} />}
                 </WrapItem>)}
             </Wrap>
         </Flex >
