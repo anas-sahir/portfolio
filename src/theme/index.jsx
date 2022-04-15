@@ -5,7 +5,7 @@ export default extendTheme({
   breakpoints: {
     sm: '320px',
     md: '769px',
-    lg: '1000px',
+    lg: '9600px',
     xl: '1200px',
     xxl: '1536px',
   },

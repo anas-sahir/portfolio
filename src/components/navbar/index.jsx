@@ -10,25 +10,25 @@ import {
     Avatar,
     HStack
 } from "@chakra-ui/react";
+import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/avatar.jpg";
 import useColor from "../../utils/useColor";
 import { Gradient } from 'react-gradient';
-import { AiOutlineHome } from "react-icons/ai";
-import { BsInfoCircle } from "react-icons/bs";
-import { BsBookHalf } from "react-icons/bs";
-import { BsCodeSlash } from "react-icons/bs";
-// import { Flex } from "chakra-ui";
-import { AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
+import { BiMessageDetail } from 'react-icons/bi';
+import { BsInfoCircle, BsBookHalf, BsCodeSlash } from "react-icons/bs";
+import { ToAcceuil, ToCV } from "../../handlers";
 
 export default function NavBar() {
     const { pick } = useColor();
     const menu = [
-        { id: 1, icon: AiOutlineHome, title: "accueil" },
-        { id: 2, icon: BsInfoCircle, title: "CV" },
-        { id: 3, icon: BsBookHalf, title: "Formation" },
-        { id: 4, icon: BsCodeSlash, title: "Experiance" },
+        { id: 1, icon: AiOutlineHome, title: "accueil", page: "/" },
+        { id: 2, icon: BsInfoCircle, title: "CV", page: "/cv" },
+        { id: 3, icon: BsBookHalf, title: "Formation", page: "/formation" },
+        { id: 4, icon: BsCodeSlash, title: "Experiance", page: "/experiance" },
+        { id: 5, icon: BiMessageDetail, title: "Me contacté", page: "/contact" },
     ];
-
+    // const navigate = useNavigate();
     return (<>
         <Box width="15%"
             h="100%"
@@ -48,15 +48,15 @@ export default function NavBar() {
         </Box>
         <Wrap
             backdropFilter={"auto"}
-            backdropBlur="4px"
-            h="100%"
+            backdropBlur="3px"
             width="15%"
             zIndex={100}
             fontWeight={"bold"}
             position="absolute"
             display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
         >
-            <WrapItem w="100%"
+            <WrapItem
+                // h="10px"
                 pt={5}
                 pl={5}
             >
@@ -66,9 +66,8 @@ export default function NavBar() {
                     <ToggleDarkMode />
                 </Box>
             </WrapItem>
-            <WrapItem w="100%">
-                <Box w="100%" align="center">
-
+            <WrapItem w="100%" >
+                <Box w="100%" align="center"  >
                     <Avatar size={"2xl"} src={logo}
                         display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
                     <Avatar size={"xl"} src={logo}
@@ -87,7 +86,7 @@ export default function NavBar() {
                 >
                     {menu.map((element) => (
                         <Dash key={element.id} icon={element.icon}
-                            title={element.title}
+                            title={element.title} navigateTo={element.page}
                         />))}
                 </Wrap>
             </WrapItem>
@@ -106,77 +105,68 @@ export default function NavBar() {
             h="8%"
             w="100%"
             backdropFilter={"auto"}
-            backdropBlur="4px"
+            backdropBlur="2px"
             zIndex={100}
             fontWeight={"bold"}
             position="absolute"
-            // backgroundColor={"red"}
-            // align="center"
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
         >
-
             <HStack
-                // justify="center"
-                // backgroundColor={"green"}
                 w="100%"
                 h="100%"
             >
-
-                <Stack w={19 / 20}
+                <Stack w={18 / 20}
                     ml="5%">
-                    <Avatar size={"xs"} src={logo} />
+                    <Avatar size={"sm"} src={logo} />
                 </Stack>
-                <Stack w={1 / 20}>
-                    <Icon size={"xs"} as={AiOutlineMenu} />
+                <Stack w={2 / 20}>
+                    <Icon as={AiOutlineMenu} />
                 </Stack>
             </HStack>
-            {/* <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
-                <Wrap pt={30}
-                    spacing='30px'
-                >
-                    {menu.map((element) => (
-                        <Dash key={element.id} icon={element.icon}
-                            title={element.title}
-                        />))}
-                </Wrap>
-            </WrapItem> */}
         </Box>
     </>);
 }
 
-function Dash({ icon, title }) {
+function Dash({ icon, title, navigateTo }) {
     const gradients = [
         ['#E9EFF7', '#475464'],
         ['#163042', '#152631'],
     ];
     const { pick } = useColor();
+    const navigate = useNavigate();
     return (
-        <WrapItem w="100%" pl={5}>
-            <Wrap align="center"
-                // justify="center"
-                w="90%"
+        <WrapItem w="100%" pl={5} 
+        justifyContent="end">
+            <Wrap
+                w="90%" // weard, but it does the job 😉
                 spacing='20px'
             >
-                <WrapItem>
-                    {/* {(icon === "home")
+                <HStack
+                    cursor="pointer"
+                    onClick={() => {
+                        navigate(navigateTo);
+                    }}>
+                    <WrapItem >
+                        {/* {(icon === "home")
                         ? <AiOutlineHome />
                         : "a"} */}
-                    <Gradient
-                        gradients={gradients}
-                        property="text"
-                        duration={2500}
-                        angle="45deg"
-                    >
-                        <Icon as={icon} />
-                    </Gradient>
-                </WrapItem>
-                <WrapItem >
-                    <Text
-                        bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
-                        bgClip='text'>
-                        {title}
-                    </Text>
-                    {/* <Gradient
+
+                        <Gradient
+                            gradients={gradients}
+                            property="text"
+                            duration={2500}
+                            angle="45deg"
+                        >
+                            <Icon as={icon} />
+                        </Gradient>
+                    </WrapItem>
+                    <WrapItem >
+                        <Text
+                            bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
+                            bgClip='text'>
+                            {title}
+                        </Text>
+                        {/* <Gradient
                         gradients={gradients}
                         property="text"
                         duration={5000}
@@ -184,7 +174,8 @@ function Dash({ icon, title }) {
                     >
                         {title}
                     </Gradient> */}
-                </WrapItem>
+                    </WrapItem>
+                </HStack>
             </Wrap >
         </WrapItem >);
 }

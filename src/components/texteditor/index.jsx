@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
-import "../../../node_modules/react-quill/dist/quill.snow.css";
-// import { EditorState, ContentState } from 'draft-js';
-// import htmlToDraft from 'html-to-draftjs';
-// const { convert } = require('html-to-text');
-// import { convert } from 'html-to-text';
-
+import 'react-quill/dist/quill.snow.css';
+import useColor from '../../utils/useColor';
 
 export default function TextEditor() {
     const [body, setbody] = useState("");
     function handleBody(e) {
         setbody(e);
     }
+    const { pick } = useColor();
 
     return (
         <>
-            <ReactQuill
+            <ReactQuill theme={"snow"}
+                style={{
+                    backgroundColor: pick(
+                        "rgba(209, 218, 228, 0.8)",
+                        "rgba(21, 38, 49, 0.8)"),
+                    backdropFilter: "auto",
+                    backdropBlur: "2px"
+                }}
                 placeholder="write something amazing..."
                 modules={TextEditor.modules}
                 formats={TextEditor.formats}
                 onChange={handleBody}
             />
+            <div className='ql-snow'>
+                <div className='ql-editor' dangerouslySetInnerHTML={{ __html: body }} />
+            </div>
         </>
 
     );
@@ -28,7 +35,7 @@ export default function TextEditor() {
 
 TextEditor.modules = {
     toolbar: [
-        [{ header: "1" }, { header: "2" }, { header: [3, 4, 5, 6] }, { font: [] }],
+        [{ header: [] }, { font: [] }],
         [{ size: [] }],
         ["bold", "italic", "underline", "strike", "blockquote"],
         [{ list: "ordered" }, { list: "bullet" }],
@@ -36,8 +43,8 @@ TextEditor.modules = {
         ["link", "image", "video"],
         ["clean"],
         ["code-block"],
-        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
-        [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ 'indent': '-1' }, { 'indent': '+1' }],
         [{ 'direction': 'rtl' }],
         [{ 'align': [] }],
     ],
@@ -50,12 +57,19 @@ TextEditor.formats = [
     "bold",
     "italic",
     "underline",
+    "align",
     "strike",
+    "script",
     "blockquote",
+    "background",
     "list",
     "bullet",
+    "indent",
     "link",
     "image",
     "video",
+    "color",
     "code-block",
+    "undo",
+    "redo"
 ];
