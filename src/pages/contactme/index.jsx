@@ -7,6 +7,12 @@ import { Gradient } from 'react-gradient';
 
 function handleClick(icon) {
     console.log(icon);
+    console.log("fb: " + BsFacebook);
+    console.log("insta: " + BsInstagram);
+    console.log("twitter: " + BsTwitter);
+    console.log("linkedin: " + BsLinkedin);
+    console.log("github: " + BsGithub);
+    console.log("gmail: " + SiGmail);
     switch (icon) {
         case BsFacebook:
             window.open(socialMedia.facebook);
