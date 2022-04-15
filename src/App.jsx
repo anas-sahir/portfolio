@@ -17,11 +17,11 @@ function App() {
         <Background />
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cv" element={<CV />} />
-          <Route path="/formation" element={<Formation />} />
-          <Route path="/experiance" element={<Experiance />} />
-          <Route path="/contact" element={<ContactMe />} />
+          <Route path="/portfolio" element={<Home />} />
+          <Route path="/portfolio/cv" element={<CV />} />
+          <Route path="/portfolio/formation" element={<Formation />} />
+          <Route path="/portfolio/experiance" element={<Experiance />} />
+          <Route path="/portfolio/contact" element={<ContactMe />} />
         </Routes>
       </Router>
     </div>

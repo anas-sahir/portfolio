@@ -22,11 +22,11 @@ import { ToAcceuil, ToCV } from "../../handlers";
 export default function NavBar() {
     const { pick } = useColor();
     const menu = [
-        { id: 1, icon: AiOutlineHome, title: "accueil", page: "/" },
-        { id: 2, icon: BsInfoCircle, title: "CV", page: "/cv" },
-        { id: 3, icon: BsBookHalf, title: "Formation", page: "/formation" },
-        { id: 4, icon: BsCodeSlash, title: "Experiance", page: "/experiance" },
-        { id: 5, icon: BiMessageDetail, title: "Me contacté", page: "/contact" },
+        { id: 1, icon: AiOutlineHome, title: "accueil", page: "/portfolio" },
+        { id: 2, icon: BsInfoCircle, title: "CV", page: "/portfolio/cv" },
+        { id: 3, icon: BsBookHalf, title: "Formation", page: "/portfolio/formation" },
+        { id: 4, icon: BsCodeSlash, title: "Experiance", page: "/portfolio/experiance" },
+        { id: 5, icon: BiMessageDetail, title: "Me contacté", page: "/portfolio/contact" },
     ];
     // const navigate = useNavigate();
     return (<>
