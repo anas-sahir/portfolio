@@ -6,7 +6,7 @@ import socialMedia from "../../configs";
 import { Gradient } from 'react-gradient';
 
 function handleClick(icon) {
-    console.log(icon.name);
+    console.log(icon);
     switch (icon) {
         case "BsFacebook":
             window.open(socialMedia.facebook);
