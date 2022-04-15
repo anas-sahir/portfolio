@@ -8,22 +8,22 @@ import { Gradient } from 'react-gradient';
 function handleClick(icon) {
     console.log(icon);
     switch (icon) {
-        case "BsFacebook":
+        case BsFacebook.name:
             window.open(socialMedia.facebook);
             break;
-        case "BsInstagram":
+        case BsInstagram.name:
             window.open(socialMedia.instagram);
             break;
-        case "BsTwitter":
+        case BsTwitter.name:
             window.open(socialMedia.twitter);
             break;
-        case "BsLinkedin":
+        case BsLinkedin.name:
             window.open(socialMedia.linkedin);
             break;
-        case "BsGithub":
+        case BsGithub.name:
             window.open(socialMedia.github);
             break;
-        case "SiGmail":
+        case SiGmail.name:
             window.open(socialMedia.gmail, "_blank");
             break;
         default:
