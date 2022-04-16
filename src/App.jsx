@@ -6,24 +6,27 @@ import CV from "./pages/cv";
 import Formation from "./pages/formation";
 import Experiance from "./pages/experiance";
 import ContactMe from "./pages/contactme";
-// import test from "./pages/test";
+import FeedBack from "./pages/feedback";
 import NavBar from './components/navbar';
-// import { Switch } from 'chakra-ui';
+import routes from './configs/routes';
+import Footer from './components/footer';
 
 function App() {
   return (
     <div className="App" >
       <Router>
-        <Background />
+        {/* <Background /> */}
         <NavBar />
         <Routes>
-          <Route path="/portfolio" element={<Home />} />
-          <Route path="/portfolio/cv" element={<CV />} />
-          <Route path="/portfolio/formation" element={<Formation />} />
-          <Route path="/portfolio/experiance" element={<Experiance />} />
-          <Route path="/portfolio/contact" element={<ContactMe />} />
+          <Route path={routes.home} element={<Home />} />
+          <Route path={routes.cv} element={<CV />} />
+          <Route path={routes.formation} element={<Formation />} />
+          <Route path={routes.experiance} element={<Experiance />} />
+          <Route path={routes.contact} element={<ContactMe />} />
+          <Route path={routes.feedback} element={<FeedBack />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }

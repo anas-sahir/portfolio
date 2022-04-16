@@ -1,34 +1,40 @@
+import { useState } from "react";
 import ToggleDarkMode from "../toggleDarkMode/index";
 import {
-    Stack,
     Box,
-    // Image,
     Wrap,
     WrapItem,
     Text,
     Icon,
     Avatar,
-    HStack
+    HStack,
+    Tooltip,
+    Flex,
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/avatar.jpg";
 import useColor from "../../utils/useColor";
-import { Gradient } from 'react-gradient';
-import { AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 import { BiMessageDetail } from 'react-icons/bi';
-import { BsInfoCircle, BsBookHalf, BsCodeSlash } from "react-icons/bs";
-import { ToAcceuil, ToCV } from "../../handlers";
+import { BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot, BsPencilSquare } from "react-icons/bs";
+import routes from "../../configs/routes";
+import { getCurrentPage } from "../../handlers/index.jsx";
+import navBarMenu from "../../configs/navbar";
+import DrawerMenu from "./drawerMenu";
 
 export default function NavBar() {
+    let [selected, setSelected] = useState(getCurrentPage());
     const { pick } = useColor();
+    const navigate = useNavigate();
     const menu = [
-        { id: 1, icon: AiOutlineHome, title: "accueil", page: "/portfolio" },
-        { id: 2, icon: BsInfoCircle, title: "CV", page: "/portfolio/cv" },
-        { id: 3, icon: BsBookHalf, title: "Formation", page: "/portfolio/formation" },
-        { id: 4, icon: BsCodeSlash, title: "Experiance", page: "/portfolio/experiance" },
-        { id: 5, icon: BiMessageDetail, title: "Me contacté", page: "/portfolio/contact" },
+        { id: 1, icon: AiOutlineHome, title: navBarMenu.home, path: routes.home },
+        { id: 2, icon: BsInfoCircle, title: navBarMenu.cv, path: routes.cv },
+        { id: 3, icon: BsBookHalf, title: navBarMenu.formation, path: routes.formation },
+        { id: 4, icon: BsCodeSlash, title: navBarMenu.experiance, path: routes.experiance },
+        { id: 5, icon: BiMessageDetail, title: navBarMenu.contact, path: routes.contact },
+        { id: 6, icon: BsPencilSquare, title: navBarMenu.feedback, path: routes.feedback },
     ];
-    // const navigate = useNavigate();
+
     return (<>
         <Box width="15%"
             h="100%"
@@ -80,93 +86,42 @@ export default function NavBar() {
                         display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} />
                 </Box>
             </WrapItem>
+            {/* computers/laptops */}
             <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
                 <Wrap pt={30}
                     spacing='30px'
                 >
                     {menu.map((element) => (
-                        <Dash key={element.id} icon={element.icon}
-                            title={element.title} navigateTo={element.page}
-                        />))}
-                </Wrap>
-            </WrapItem>
-
-            <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} >
-                <Wrap pt={30}
-                    spacing='30px'
-                >
-                    {menu.map((element) => (
-                        <DashTwo key={element.id} icon={element.icon}
-                        />))}
-                </Wrap>
-            </WrapItem>
-        </Wrap>
-        <Box
-            h="8%"
-            w="100%"
-            backdropFilter={"auto"}
-            backdropBlur="2px"
-            zIndex={100}
-            fontWeight={"bold"}
-            position="absolute"
-            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
-        >
-            <HStack
-                w="100%"
-                h="100%"
-            >
-                <Stack w={18 / 20}
-                    ml="5%">
-                    <Avatar size={"sm"} src={logo} />
-                </Stack>
-                <Stack w={2 / 20}>
-                    <Icon as={AiOutlineMenu} />
-                </Stack>
-            </HStack>
-        </Box>
-    </>);
-}
-
-function Dash({ icon, title, navigateTo }) {
-    const gradients = [
-        ['#E9EFF7', '#475464'],
-        ['#163042', '#152631'],
-    ];
-    const { pick } = useColor();
-    const navigate = useNavigate();
-    return (
-        <WrapItem w="100%" pl={5} 
-        justifyContent="end">
-            <Wrap
-                w="90%" // weard, but it does the job 😉
-                spacing='20px'
-            >
-                <HStack
-                    cursor="pointer"
-                    onClick={() => {
-                        navigate(navigateTo);
-                    }}>
-                    <WrapItem >
-                        {/* {(icon === "home")
+                        // <Dash key={element.id} icon={element.icon}
+                        //     title={element.title} navigateTo={element.path}
+                        // />
+                        <WrapItem w="100%" >
+                            <Wrap
+                                // weard, but it does the job 😉
+                                spacing='20px'
+                            >
+                                <HStack
+                                    cursor="pointer"
+                                    onClick={() => {
+                                        setSelected(element.title);
+                                        navigate(element.path);
+                                    }}>
+                                    <WrapItem alignItems="center">
+                                        {/* {(icon === "home")
                         ? <AiOutlineHome />
                         : "a"} */}
-
-                        <Gradient
-                            gradients={gradients}
-                            property="text"
-                            duration={2500}
-                            angle="45deg"
-                        >
-                            <Icon as={icon} />
-                        </Gradient>
-                    </WrapItem>
-                    <WrapItem >
-                        <Text
-                            bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
-                            bgClip='text'>
-                            {title}
-                        </Text>
-                        {/* <Gradient
+                                        {(selected === element.title)
+                                            ? <Icon as={BsDot} fontSize="3xl" />
+                                            : <Icon as={BsDot} fontSize="3xl" color={pick("gray.300", "#15232D")} />}
+                                        <Icon as={element.icon} />
+                                    </WrapItem>
+                                    <WrapItem >
+                                        <Text
+                                            bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
+                                            bgClip='text'>
+                                            {element.title}
+                                        </Text>
+                                        {/* <Gradient
                         gradients={gradients}
                         property="text"
                         duration={5000}
@@ -174,26 +129,130 @@ function Dash({ icon, title, navigateTo }) {
                     >
                         {title}
                     </Gradient> */}
-                    </WrapItem>
-                </HStack>
-            </Wrap >
-        </WrapItem >);
+                                    </WrapItem>
+                                </HStack>
+                            </Wrap >
+                        </WrapItem >
+                    ))}
+                </Wrap>
+            </WrapItem>
+            {/* tablets/phones */}
+            <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} h="100%" >
+                <Wrap pt={30} h="100%"
+                    spacing='30px'
+                >
+                    {menu.map((element) => (
+                        // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
+                        <WrapItem w="100%">
+                            <Tooltip hasArrow label={element.title} placement='right-end' fontSize={20}>
+                                <Wrap align="center"
+                                    justify="center"
+                                    w="80%"
+                                    spacing='20px'
+                                >
+                                    <WrapItem
+                                        cursor="pointer"
+                                        onClick={() => {
+                                            setSelected(element.title);
+                                            navigate(element.path);
+                                        }}>
+                                        {(selected === element.title)
+                                            ? <Icon as={BsDot} fontSize="3xl" />
+                                            : <Icon as={BsDot} fontSize="3xl" color={pick("gray.300", "#15232D")} />}
+
+                                        <Icon as={element.icon} w={6} h={6} />
+                                    </WrapItem>
+                                </Wrap >
+                            </Tooltip>
+                        </WrapItem >
+                    ))}
+                </Wrap>
+            </WrapItem>
+        </Wrap >
+        {/* phones */}
+        < Box
+            h="8%"
+            w="100%"
+            backdropFilter={"auto"}
+            backdropBlur="2px"
+            zIndex={100}
+            fontWeight={"bold"}
+            position="absolute"
+            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }
+            }
+        >
+            <HStack
+                w="100%"
+                h="100%"
+            >
+                <Flex flexDirection={"row-reverse"} w="94%" h="100%" align={"center"}>
+                    <DrawerMenu />
+                </Flex>
+            </HStack>
+        </Box >
+    </>);
 }
 
-function DashTwo({ icon }) {
-    return (
-        <WrapItem w="100%">
-            <Wrap align="center"
-                justify="center"
-                w="100%"
-                spacing='20px'
-            >
-                <WrapItem>
-                    {/* {(icon === "home")
-                        ? <AiOutlineHome />
-                        : "a"} */}
-                    <Icon as={icon} w={6} h={6} />
-                </WrapItem>
-            </Wrap >
-        </WrapItem >);
-}
+// function Dash({ icon, title, navigateTo }) {
+//     const { pick } = useColor();
+//     const navigate = useNavigate();
+//     return (
+//         <WrapItem w="100%" pl={5}
+//             justifyContent="end">
+//             <Wrap
+//                 w="90%" // weard, but it does the job 😉
+//                 spacing='20px'
+//             >
+//                 <HStack
+//                     cursor="pointer"
+//                     onClick={() => {
+//                         navigate(navigateTo);
+//                     }}>
+//                     <WrapItem >
+//                         {/* {(icon === "home")
+//                         ? <AiOutlineHome />
+//                         : "a"} */}
+//                         <Icon as={icon} />
+//                     </WrapItem>
+//                     <WrapItem >
+//                         <Text
+//                             bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
+//                             bgClip='text'>
+//                             {title}
+//                         </Text>
+//                         {/* <Gradient
+//                         gradients={gradients}
+//                         property="text"
+//                         duration={5000}
+//                         angle="45deg"
+//                     >
+//                         {title}
+//                     </Gradient> */}
+//                     </WrapItem>
+//                 </HStack>
+//             </Wrap >
+//         </WrapItem >);
+// }
+
+// function DashTwo({ icon, navigateTo }) {
+//     const navigate = useNavigate();
+//     return (
+//         <WrapItem w="100%">
+//             <Wrap align="center"
+//                 justify="center"
+//                 w="100%"
+//                 spacing='20px'
+//             >
+//                 <WrapItem
+//                     cursor="pointer"
+//                     onClick={() => {
+//                         navigate(navigateTo);
+//                     }}>
+//                     {/* {(icon === "home")
+//                         ? <AiOutlineHome />
+//                         : "a"} */}
+//                     <Icon as={icon} w={6} h={6} />
+//                 </WrapItem>
+//             </Wrap >
+//         </WrapItem >);
+// }
