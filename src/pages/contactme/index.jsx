@@ -18,6 +18,7 @@ export default function ContactMe() {
             zIndex={11}
             align="center"
             justify="center"
+            letterSpacing={"wide"}
         >
             <Wrap
                 justify={"center"}

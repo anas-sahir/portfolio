@@ -59,6 +59,7 @@ export default function NavBar() {
             zIndex={100}
             fontWeight={"bold"}
             position="absolute"
+            letterSpacing={"wide"}
             display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
         >
             <WrapItem

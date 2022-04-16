@@ -17,7 +17,7 @@ function App() {
       <Router>
         {/* <Background /> */}
         <NavBar />
-        <Routes>
+        <Routes >
           <Route path={routes.home} element={<Home />} />
           <Route path={routes.cv} element={<CV />} />
           <Route path={routes.formation} element={<Formation />} />

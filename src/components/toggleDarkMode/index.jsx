@@ -1,4 +1,3 @@
-import React from 'react'
 import useColor from "../../utils/useColor"
 import { Icon } from '@chakra-ui/react'
 import { BsFillMoonFill } from "react-icons/bs"

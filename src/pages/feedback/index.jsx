@@ -1,7 +1,8 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, Icon } from "@chakra-ui/react";
 import TextEditor from "../../components/texteditor";
 
 export default function FeedBack() {
+
     return (
         <Flex
             ml={{ xxl: "15%", xl: "15%", lg: "15%", md: "15%", sm: "0%", base: "0%" }}
@@ -11,12 +12,11 @@ export default function FeedBack() {
             zIndex={10}
             align="center"
             justify={"center"}
+            letterSpacing={"wide"}
             flexDirection="column"
         >
+            
             <TextEditor />
-            <Button>
-                send
-            </Button>
         </Flex >
     );
 }

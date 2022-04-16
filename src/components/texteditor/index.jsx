@@ -1,43 +1,83 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import useColor from '../../utils/useColor';
+import useColor from "../../utils/useColor";
+import { BiSend, BiCheck, BiError } from "react-icons/bi";
+import emailjs from "emailjs-com";
 
 export default function TextEditor() {
     const [body, setbody] = useState("");
     const { pick } = useColor();
+    const [error, setError] = useState(false);
+    const [sending, setSending] = useState(false);
+    const [sended, setSended] = useState(false);
 
     function handleBody(e) {
         setbody(e);
     }
 
     return (
-        <Flex >
+        <Flex flexDirection="column"
+            align={"center"}
+        >
+            <Button
+                mb={5}
+                mt={-20}
+                leftIcon={(sended) ? <BiCheck /> : (error) ? <BiError /> : <BiSend />}
+                onClick={() => {
+                    setSending(true);
+                    emailjs
+                        .send(
+                            "service_eheadna",
+                            "template_jzdwyg8",
+                            { "body": body },
+                            "E6JFNNf4VCuEbyXku")
+                        .then(
+                            (result) => {
+                                setSending(false);
+                                setSended(true);
+                            },
+                            (error) => {
+                                setSending(false);
+                                setError(true);
+                            });
+                }}
+                isLoading={sending}
+                loadingText="envoi en cours"
+                color={(sended) ? "green" : (error) ? "red" : null}
+                borderColor={(sended) ? "green" : (error) ? "red" : null}
+                variant='outline'
+            >
+                {(sended)
+                    ? "Envoyé"
+                    : (error)
+                        ? "Une erreur s'est produite, veuillez réessayer ultérieurement"
+                        : "Envoyer"}
+            </Button>
             <ReactQuill theme='snow'
                 placeholder="write something amazing..."
-                
+
                 style={{
                     background: pick(
-                        "rgba(209, 218, 228, 0.8)",
-                        "rgba(21, 38, 49, 0.8)"),
+                        "rgba(209, 218, 228,1)",
+                        "rgba(21, 38, 49, 1)"),
                     backdropFilter: "auto",
                     backdropBlur: "2px",
-                    height: "200px",
-                    paddingBottom:"43px",
+                    // height: "200px",
                     // minHeight: window.innerHeight * 0.4,
-                    // maxHeight: window.innerHeight * 0.8,
-                    // maxWidth: window.innerWidth * 0.8,
+                    maxHeight: window.innerHeight * 0.5,
+                    maxWidth: window.innerWidth * 0.8,
                 }}
                 modules={TextEditor.modules}
                 formats={TextEditor.formats}
                 onChange={handleBody}
             />
-        </Flex>
-    );
-    {/* <div className='ql-snow'>
+            {/* <div className='ql-snow'>
             <div className='ql-editor' dangerouslySetInnerHTML={{ __html: body }} />
         </div> */}
+        </Flex>
+    );
 }
 
 TextEditor.modules = {
