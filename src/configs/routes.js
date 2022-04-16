@@ -1,10 +1,10 @@
 const routes = {
-    "home": "/",
-    "cv": "/cv",
-    "formation": "/formation",
-    "experiance": "/experiance",
-    "contact": "/contact",
-    "feedback": "/feedback",
+    "home": "/portfolio/",
+    "cv": "/portfolio/cv",
+    "formation": "/portfolio/formation",
+    "experiance": "/portfolio/experiance",
+    "contact": "/portfolio/contact",
+    "feedback": "/portfolio/feedback",
 };
 
 module.exports = routes;
