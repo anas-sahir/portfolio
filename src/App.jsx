@@ -26,7 +26,7 @@ function App() {
           <Route path={routes.feedback} element={<FeedBack />} />
         </Routes>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

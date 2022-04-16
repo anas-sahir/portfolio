@@ -1,14 +1,22 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
+import TextEditor from "../../components/texteditor";
 
 export default function FeedBack() {
     return (
-        <Box
-            pl={{ xxl: "15%", xl: "15%", lg: "15%", md: "15%", sm: "0%", base: "0%" }}
-            pt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "8%", base: "8%" }}
-            w="100%"
-            zIndex={10}>
-            feedback page
-
-        </Box >
+        <Flex
+            ml={{ xxl: "15%", xl: "15%", lg: "15%", md: "15%", sm: "0%", base: "0%" }}
+            mt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "43px", base: "43px" }}
+            px={10}
+            h={window.innerHeight}
+            zIndex={10}
+            align="center"
+            justify={"center"}
+            flexDirection="column"
+        >
+            <TextEditor />
+            <Button>
+                send
+            </Button>
+        </Flex >
     );
 }

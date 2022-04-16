@@ -95,7 +95,7 @@ export default function NavBar() {
                         // <Dash key={element.id} icon={element.icon}
                         //     title={element.title} navigateTo={element.path}
                         // />
-                        <WrapItem w="100%" >
+                        <WrapItem key={element.id} w="100%" >
                             <Wrap
                                 // weard, but it does the job 😉
                                 spacing='20px'
@@ -110,9 +110,10 @@ export default function NavBar() {
                                         {/* {(icon === "home")
                         ? <AiOutlineHome />
                         : "a"} */}
-                                        {(selected === element.title)
-                                            ? <Icon as={BsDot} fontSize="3xl" />
-                                            : <Icon as={BsDot} fontSize="3xl" color={pick("gray.300", "#15232D")} />}
+
+                                        <Icon as={BsDot} fontSize="3xl"
+                                            opacity={(selected === element.title) ? "1" : "0"}
+                                        />
                                         <Icon as={element.icon} />
                                     </WrapItem>
                                     <WrapItem >
@@ -143,7 +144,7 @@ export default function NavBar() {
                 >
                     {menu.map((element) => (
                         // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
-                        <WrapItem w="100%">
+                        <WrapItem key={element.id} w="100%">
                             <Tooltip hasArrow label={element.title} placement='right-end' fontSize={20}>
                                 <Wrap align="center"
                                     justify="center"
@@ -156,9 +157,9 @@ export default function NavBar() {
                                             setSelected(element.title);
                                             navigate(element.path);
                                         }}>
-                                        {(selected === element.title)
-                                            ? <Icon as={BsDot} fontSize="3xl" />
-                                            : <Icon as={BsDot} fontSize="3xl" color={pick("gray.300", "#15232D")} />}
+                                        <Icon as={BsDot} fontSize="3xl"
+                                            opacity={(selected === element.title) ? "1" : "0"}
+                                        />
 
                                         <Icon as={element.icon} w={6} h={6} />
                                     </WrapItem>
@@ -171,7 +172,7 @@ export default function NavBar() {
         </Wrap >
         {/* phones */}
         < Box
-            h="8%"
+            h="43px"
             w="100%"
             backdropFilter={"auto"}
             backdropBlur="2px"

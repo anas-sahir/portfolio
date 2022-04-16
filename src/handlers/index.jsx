@@ -59,7 +59,7 @@ export function getCurrentPage() {
     const url = window.location.href.split("/");
     let i = url.length;
     do {
-        switch ("/" + url[i]) {
+        switch ("/portfolio/" + url[i]) {
             case routes.home:
                 return navBarMenu.home;
             case routes.cv:
@@ -70,6 +70,8 @@ export function getCurrentPage() {
                 return navBarMenu.experiance;
             case routes.contact:
                 return navBarMenu.contact;
+            case routes.feedback:
+                return navBarMenu.feedback;
             default:
                 break;
         }

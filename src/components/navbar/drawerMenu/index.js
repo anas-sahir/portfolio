@@ -60,7 +60,7 @@ export default function DrawerMenu() {
               // <Dash key={element.id} icon={element.icon}
               //     title={element.title} navigateTo={element.path}
               // />
-              <WrapItem w="100%" >
+              <WrapItem key={element.id} w="100%" >
                 <Wrap
                   spacing='20px'
                 >
@@ -71,9 +71,9 @@ export default function DrawerMenu() {
                       navigate(element.path);
                     }}>
                     <WrapItem alignItems="center">
-                      {(selected === element.title)
-                        ? <Icon as={BsDot} fontSize="3xl" />
-                        : <Icon as={BsDot} fontSize="3xl" color={pick("white", "#2D3748")} />}
+                      <Icon as={BsDot} fontSize="3xl"
+                        opacity={(selected === element.title) ? "1" : "0"}
+                      />
                       <Icon as={element.icon} />
                     </WrapItem>
                     <WrapItem >

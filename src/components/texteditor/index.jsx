@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -5,48 +6,53 @@ import useColor from '../../utils/useColor';
 
 export default function TextEditor() {
     const [body, setbody] = useState("");
+    const { pick } = useColor();
+
     function handleBody(e) {
         setbody(e);
     }
-    const { pick } = useColor();
 
     return (
-        <>
-            <ReactQuill theme={"snow"}
+        <Flex >
+            <ReactQuill theme='snow'
+                placeholder="write something amazing..."
+                
                 style={{
-                    backgroundColor: pick(
+                    background: pick(
                         "rgba(209, 218, 228, 0.8)",
                         "rgba(21, 38, 49, 0.8)"),
                     backdropFilter: "auto",
-                    backdropBlur: "2px"
+                    backdropBlur: "2px",
+                    height: "200px",
+                    paddingBottom:"43px",
+                    // minHeight: window.innerHeight * 0.4,
+                    // maxHeight: window.innerHeight * 0.8,
+                    // maxWidth: window.innerWidth * 0.8,
                 }}
-                placeholder="write something amazing..."
                 modules={TextEditor.modules}
                 formats={TextEditor.formats}
                 onChange={handleBody}
             />
-            <div className='ql-snow'>
-                <div className='ql-editor' dangerouslySetInnerHTML={{ __html: body }} />
-            </div>
-        </>
-
+        </Flex>
     );
+    {/* <div className='ql-snow'>
+            <div className='ql-editor' dangerouslySetInnerHTML={{ __html: body }} />
+        </div> */}
 }
 
 TextEditor.modules = {
     toolbar: [
-        [{ header: [] }, { font: [] }],
+        [{ header: [1, 2, 3] }],
+        [{ font: [] }],
         [{ size: [] }],
+        [{ 'align': [] }, { 'direction': 'rtl' }],
         ["bold", "italic", "underline", "strike", "blockquote"],
-        [{ list: "ordered" }, { list: "bullet" }],
+        [{ 'script': 'sub' }, { 'script': 'super' }],
+        [{ list: "ordered" }, { list: "bullet" }, { 'indent': '-1' }, { 'indent': '+1' }],
         [{ 'color': [] }, { 'background': [] }],
         ["link", "image", "video"],
-        ["clean"],
         ["code-block"],
-        [{ 'script': 'sub' }, { 'script': 'super' }],
-        [{ 'indent': '-1' }, { 'indent': '+1' }],
-        [{ 'direction': 'rtl' }],
-        [{ 'align': [] }],
+        ["clean"],
     ],
 };
 

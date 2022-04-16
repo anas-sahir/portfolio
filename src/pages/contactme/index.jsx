@@ -25,7 +25,7 @@ export default function ContactMe() {
                 spacing={"6%"}
                 spacingY={"10%"}
             >
-                {menu.map((element) => <WrapItem cursor={"pointer"} w={sicon} h={sicon} >
+                {menu.map((element) => <WrapItem key={element.id} cursor={"pointer"} w={sicon} h={sicon} >
                     <Icon as={element.icon} w="full" h="full" onClick={() => { handleClick(element.icon) }} />
                 </WrapItem>)}
             </Wrap>
