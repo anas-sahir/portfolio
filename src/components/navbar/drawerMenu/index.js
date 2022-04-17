@@ -1,26 +1,17 @@
 import React from "react";
 import {
-  Drawer,
-  DrawerBody,
-  // DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  useDisclosure,
-  Icon,
-  Avatar,
-  Wrap,
-  WrapItem,
-  HStack,
+  Drawer, DrawerBody, DrawerHeader, DrawerOverlay,
+  DrawerContent, DrawerCloseButton, useDisclosure,
+  Icon, Avatar, Wrap, WrapItem, HStack,
 } from "@chakra-ui/react";
 import logo from "../../../assets/avatar.jpg";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import ToggleDarkMode from "../../toggleDarkMode";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiMessageDetail } from 'react-icons/bi';
-import { BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot, BsPencilSquare } from "react-icons/bs";
+import {
+  BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
+  BsPencilSquare, BsChatLeftText, BsHouseDoor
+} from "react-icons/bs";
 import { getCurrentPage } from "../../../handlers/index";
 import useColor from "../../../utils/useColor";
 import navBarMenu from "../../../configs/navbar";
@@ -32,11 +23,11 @@ export default function DrawerMenu() {
   const { pick } = useColor();
   const navigate = useNavigate();
   const menu = [
-    { id: 1, icon: AiOutlineHome, title: navBarMenu.home, path: routes.home },
+    { id: 1, icon: BsHouseDoor, title: navBarMenu.home, path: routes.home },
     { id: 2, icon: BsInfoCircle, title: navBarMenu.cv, path: routes.cv },
     { id: 3, icon: BsBookHalf, title: navBarMenu.formation, path: routes.formation },
     { id: 4, icon: BsCodeSlash, title: navBarMenu.experiance, path: routes.experiance },
-    { id: 5, icon: BiMessageDetail, title: navBarMenu.contact, path: routes.contact },
+    { id: 5, icon: BsChatLeftText, title: navBarMenu.contact, path: routes.contact },
     { id: 6, icon: BsPencilSquare, title: navBarMenu.feedback, path: routes.feedback },
   ];
 

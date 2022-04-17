@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { BsFacebook, BsInstagram, BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs";
+import {
+    BsFacebook, BsInstagram, BsTwitter, BsLinkedin,
+    BsGithub, BsInfoCircle, BsBookHalf, BsCodeSlash,
+    BsPencilSquare, BsHouseDoor, BsChatLeftText
+} from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 import socialMedia from "../configs/socialMedia";
 import routes from '../configs/routes';
@@ -50,6 +54,26 @@ export function handleClick(icon) {
         case SiGmail:
             window.open(socialMedia.gmail, "_blank");
             break;
+        default:
+            break;
+    }
+}
+
+export function getPageIcon() {
+    const page = getCurrentPage();
+    switch (page) {
+        case navBarMenu.home:
+            return BsHouseDoor;
+        case navBarMenu.cv:
+            return BsInfoCircle;
+        case navBarMenu.formation:
+            return BsBookHalf;
+        case navBarMenu.experiance:
+            return BsCodeSlash;
+        case navBarMenu.contact:
+            return BsChatLeftText;
+        case navBarMenu.feedback:
+            return BsPencilSquare;
         default:
             break;
     }

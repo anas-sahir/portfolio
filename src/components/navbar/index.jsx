@@ -14,11 +14,12 @@ import {
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/avatar.jpg";
 import useColor from "../../utils/useColor";
-import { AiOutlineHome } from "react-icons/ai";
-import { BiMessageDetail } from 'react-icons/bi';
-import { BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot, BsPencilSquare } from "react-icons/bs";
+import {
+    BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
+    BsPencilSquare, BsChatLeftText, BsHouseDoor
+} from "react-icons/bs";
 import routes from "../../configs/routes";
-import { getCurrentPage } from "../../handlers/index.jsx";
+import { getCurrentPage, getPageIcon } from "../../handlers/index.jsx";
 import navBarMenu from "../../configs/navbar";
 import DrawerMenu from "./drawerMenu";
 
@@ -27,11 +28,11 @@ export default function NavBar() {
     const { pick } = useColor();
     const navigate = useNavigate();
     const menu = [
-        { id: 1, icon: AiOutlineHome, title: navBarMenu.home, path: routes.home },
+        { id: 1, icon: BsHouseDoor, title: navBarMenu.home, path: routes.home },
         { id: 2, icon: BsInfoCircle, title: navBarMenu.cv, path: routes.cv },
         { id: 3, icon: BsBookHalf, title: navBarMenu.formation, path: routes.formation },
         { id: 4, icon: BsCodeSlash, title: navBarMenu.experiance, path: routes.experiance },
-        { id: 5, icon: BiMessageDetail, title: navBarMenu.contact, path: routes.contact },
+        { id: 5, icon: BsChatLeftText, title: navBarMenu.contact, path: routes.contact },
         { id: 6, icon: BsPencilSquare, title: navBarMenu.feedback, path: routes.feedback },
     ];
 
@@ -186,10 +187,17 @@ export default function NavBar() {
             <HStack
                 w="100%"
                 h="100%"
+                flexDirection={"row"}
             >
-                <Flex flexDirection={"row-reverse"} w="94%" h="100%" align={"center"}>
-                    <DrawerMenu />
+                <Flex w={9 / 10} align="center" justify={"center"}>
+                    <Icon as={getPageIcon()} />
+                    <Text ml={3}>
+                        {getCurrentPage()}
+                    </Text>
                 </Flex>
+                <Flex w={1 / 10} h="100%" align={"center"}>
+                    <DrawerMenu />
+                </Flex >
             </HStack>
         </Box >
     </>);
