@@ -46,7 +46,7 @@ export default function NavBar() {
         >
         </Box>
         <Box width="100%"
-            h="8%"
+            h="43px"
             backgroundColor={pick("gray.300", "#15232D")}
             opacity={0.8}
             position="absolute"
