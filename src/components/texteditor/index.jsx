@@ -48,6 +48,7 @@ export default function TextEditor() {
                 color={(sended) ? "green" : (error) ? "red" : null}
                 borderColor={(sended) ? "green" : (error) ? "red" : null}
                 variant='outline'
+                borderWidth={2}
             >
                 {(sended)
                     ? "Envoyé"

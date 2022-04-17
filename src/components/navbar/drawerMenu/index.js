@@ -51,16 +51,16 @@ export default function DrawerMenu() {
               // <Dash key={element.id} icon={element.icon}
               //     title={element.title} navigateTo={element.path}
               // />
-              <WrapItem key={element.id} w="100%" >
+              <WrapItem key={element.id} w="100%" 
+              cursor="pointer"
+              onClick={() => {
+                setSelected(element.title);
+                navigate(element.path);
+              }} >
                 <Wrap
                   spacing='20px'
                 >
-                  <HStack
-                    cursor="pointer"
-                    onClick={() => {
-                      setSelected(element.title);
-                      navigate(element.path);
-                    }}>
+                  <HStack>
                     <WrapItem alignItems="center">
                       <Icon as={BsDot} fontSize="3xl"
                         opacity={(selected === element.title) ? "1" : "0"}

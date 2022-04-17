@@ -97,17 +97,16 @@ export default function NavBar() {
                         // <Dash key={element.id} icon={element.icon}
                         //     title={element.title} navigateTo={element.path}
                         // />
-                        <WrapItem key={element.id} w="100%" >
-                            <Wrap
-                                // weard, but it does the job 😉
-                                spacing='20px'
-                            >
-                                <HStack
-                                    cursor="pointer"
-                                    onClick={() => {
-                                        setSelected(element.title);
-                                        navigate(element.path);
-                                    }}>
+                        <WrapItem key={element.id}
+                            w="100%"
+                            cursor="pointer"
+                            onClick={() => {
+                                setSelected(element.title);
+                                navigate(element.path);
+                            }}
+                        >
+                            <Wrap spacing='20px'>
+                                <HStack>
                                     <WrapItem alignItems="center">
                                         {/* {(icon === "home")
                         ? <AiOutlineHome />
@@ -140,25 +139,22 @@ export default function NavBar() {
                 </Wrap>
             </WrapItem>
             {/* tablets/phones */}
-            <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} h="100%" >
+            <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} >
                 <Wrap pt={30} h="100%"
                     spacing='30px'
                 >
                     {menu.map((element) => (
                         // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
-                        <WrapItem key={element.id} w="100%">
-                            <Tooltip hasArrow label={element.title} placement='right-end' fontSize={20}>
-                                <Wrap align="center"
-                                    justify="center"
-                                    w="80%"
-                                    spacing='20px'
-                                >
-                                    <WrapItem
-                                        cursor="pointer"
-                                        onClick={() => {
-                                            setSelected(element.title);
-                                            navigate(element.path);
-                                        }}>
+                        <WrapItem key={element.id} w="100%" cursor="pointer"
+                            onClick={() => {
+                                setSelected(element.title);
+                                navigate(element.path);
+                            }}>
+                            <Tooltip hasArrow label={element.title}
+                                placement='right-end' fontSize={20}>
+                                <Wrap align="center" justify="center"
+                                    w="80%" spacing='20px' >
+                                    <WrapItem>
                                         <Icon as={BsDot} fontSize="3xl"
                                             opacity={(selected === element.title) ? "1" : "0"}
                                         />

@@ -1,9 +1,11 @@
 import { extendTheme } from "@chakra-ui/react";
 import color from "../utils/color";
+import useColor from "../utils/useColor";
+
 
 export default extendTheme({
   breakpoints: {
-    sm: '320px',
+    sm: '321px',
     md: '769px',
     lg: '9600px',
     xl: '1200px',
@@ -24,7 +26,7 @@ export default extendTheme({
     },
   },
   config: {
-    useSystemColorMode: false,
+    // useSystemColorMode: true,
     initialColorMode: "light",
   },
   fonts: {

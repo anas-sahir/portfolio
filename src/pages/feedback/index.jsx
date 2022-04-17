@@ -15,7 +15,6 @@ export default function FeedBack() {
             letterSpacing={"wide"}
             flexDirection="column"
         >
-            
             <TextEditor />
         </Flex >
     );
