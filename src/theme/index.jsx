@@ -16,18 +16,18 @@ export default extendTheme({
       light: {
         background: "#edf2f7",
         backgroundShade: "gray.200",
-        colorToggle: "#f00",
+        // colorToggle: "#f00",
       },
       dark: {
         background: "#163042",
         backgroundShade: "#333",
-        colorToggle: "#0f0",
+        // colorToggle: "#0f0",
       },
     },
   },
   config: {
-    // useSystemColorMode: true,
-    initialColorMode: "light",
+    useSystemColorMode: true,
+    // initialColorMode: "light",
   },
   fonts: {
     body: "'baloo 2', sans-serif",

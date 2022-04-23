@@ -61,14 +61,14 @@ export default function TextEditor() {
 
                 style={{
                     background: pick(
-                        "rgba(209, 218, 228,1)",
-                        "rgba(21, 38, 49, 1)"),
-                    backdropFilter: "auto",
-                    backdropBlur: "2px",
-                    // height: "200px",
-                    // minHeight: window.innerHeight * 0.4,
+                        "rgba(209, 218, 228, 0.93)",
+                        "rgba(21, 38, 49, 0.96)"),
+                    height: "200px",
+                    minHeight: window.innerHeight * 0.4,
                     maxHeight: window.innerHeight * 0.5,
                     maxWidth: window.innerWidth * 0.8,
+                    color: pick("gray.200", "white"),
+                    paddingBottom:"44px"
                 }}
                 modules={TextEditor.modules}
                 formats={TextEditor.formats}

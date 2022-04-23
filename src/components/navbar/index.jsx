@@ -41,133 +41,136 @@ export default function NavBar() {
             h="100%"
             backgroundColor={pick("gray.300", "#15232D")}
             opacity={0.8}
-            position="absolute"
+            position="fixed"
             display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
+            onLoadStart={() => { setSelected(getCurrentPage()) }}
         >
         </Box>
         <Box width="100%"
+            zIndex={90}
             h="43px"
             backgroundColor={pick("gray.300", "#15232D")}
             opacity={0.8}
-            position="absolute"
+            position="fixed"
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
         >
         </Box>
-        <Wrap
+        <Flex
+            position="absolute"
             backdropFilter={"auto"}
             backdropBlur="3px"
             width="15%"
-            zIndex={100}
-            fontWeight={"bold"}
-            position="absolute"
-            letterSpacing={"wide"}
             display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
+            height="100%"
         >
-            <WrapItem
-                // h="10px"
-                pt={5}
-                pl={5}
+
+            <Wrap
+                // width="15%"
+                zIndex={100}
+                fontWeight={"bold"}
+                position="absolute"
+                letterSpacing={"wide"}
+            // backgroundColor={pick("gray.300", "#15232D")}
+            // display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
             >
-                <Box _hover={{ transform: "scale(1.2) rotate(30deg)" }}
-                    transition="1s"
+                <WrapItem
+                    // h="10px"
+                    pt={5}
+                    pl={5}
                 >
-                    <ToggleDarkMode />
-                </Box>
-            </WrapItem>
-            <WrapItem w="100%" >
-                <Box w="100%" align="center"  >
-                    <Avatar size={"2xl"} src={logo}
-                        display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
-                    <Avatar size={"xl"} src={logo}
-                        display={{ xxl: "none", xl: "none", lg: "flex", md: "none", sm: "none", base: "none" }} />
-                    <Avatar size={"lg"} src={logo}
-                        display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} />
-                    <Avatar size={"md"} src={logo}
-                        display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "none" }} />
-                    <Avatar size={"sm"} src={logo}
-                        display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} />
-                </Box>
-            </WrapItem>
-            {/* computers/laptops */}
-            <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
-                <Wrap pt={30}
-                    spacing='30px'
-                >
-                    {menu.map((element) => (
-                        // <Dash key={element.id} icon={element.icon}
-                        //     title={element.title} navigateTo={element.path}
-                        // />
-                        <WrapItem key={element.id}
-                            w="100%"
-                            cursor="pointer"
-                            onClick={() => {
-                                setSelected(element.title);
-                                navigate(element.path);
-                            }}
-                        >
-                            <Wrap spacing='20px'>
-                                <HStack>
-                                    <WrapItem alignItems="center">
-                                        {/* {(icon === "home")
+                    <Box _hover={{ transform: "scale(1.2) rotate(30deg)" }}
+                        transition="1s"
+                    >
+                        <ToggleDarkMode />
+                    </Box>
+                </WrapItem>
+                <WrapItem w="100%" >
+                    <Box w="100%" align="center"  >
+                        <Avatar size={"2xl"} src={logo}
+                            display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
+                        <Avatar size={"xl"} src={logo}
+                            display={{ xxl: "none", xl: "none", lg: "flex", md: "none", sm: "none", base: "none" }} />
+                        <Avatar size={"lg"} src={logo}
+                            display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} />
+                        <Avatar size={"md"} src={logo}
+                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "none" }} />
+                        <Avatar size={"sm"} src={logo}
+                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} />
+                    </Box>
+                </WrapItem>
+                {/* computers/laptops */}
+                <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
+                    <Wrap pt={30}
+                        spacing='30px'
+                    >
+                        {menu.map((element) => (
+                            // <Dash key={element.id} icon={element.icon}
+                            //     title={element.title} navigateTo={element.path}
+                            // />
+                            <WrapItem key={element.id}
+                                w="100%"
+                                cursor="pointer"
+                                onClick={() => {
+                                    setSelected(element.title);
+                                    navigate(element.path);
+                                }}
+                            >
+                                <Wrap spacing='20px'>
+                                    <HStack>
+                                        <WrapItem alignItems="center">
+                                            {/* {(icon === "home")
                         ? <AiOutlineHome />
                         : "a"} */}
 
-                                        <Icon as={BsDot} fontSize="3xl"
-                                            opacity={(selected === element.title) ? "1" : "0"}
-                                        />
-                                        <Icon as={element.icon} />
-                                    </WrapItem>
-                                    <WrapItem >
-                                        <Text
-                                            bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
-                                            bgClip='text'>
-                                            {element.title}
-                                        </Text>
-                                        {/* <Gradient
-                        gradients={gradients}
-                        property="text"
-                        duration={5000}
-                        angle="45deg"
-                    >
-                        {title}
-                    </Gradient> */}
-                                    </WrapItem>
-                                </HStack>
-                            </Wrap >
-                        </WrapItem >
-                    ))}
-                </Wrap>
-            </WrapItem>
-            {/* tablets/phones */}
-            <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} >
-                <Wrap pt={30} h="100%"
-                    spacing='30px'
-                >
-                    {menu.map((element) => (
-                        // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
-                        <WrapItem key={element.id} w="100%" cursor="pointer"
-                            onClick={() => {
-                                setSelected(element.title);
-                                navigate(element.path);
-                            }}>
-                            <Tooltip hasArrow label={element.title}
-                                placement='right-end' fontSize={20}>
-                                <Wrap align="center" justify="center"
-                                    w="80%" spacing='20px' >
-                                    <WrapItem>
-                                        <Icon as={BsDot} fontSize="3xl"
-                                            opacity={(selected === element.title) ? "1" : "0"}
-                                        />
-
-                                        <Icon as={element.icon} w={6} h={6} />
-                                    </WrapItem>
+                                            <Icon as={BsDot} fontSize="3xl"
+                                                opacity={(selected === element.title) ? "1" : "0"}
+                                            />
+                                            <Icon as={element.icon} />
+                                        </WrapItem>
+                                        <WrapItem >
+                                            <Text
+                                                bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
+                                                bgClip='text'>
+                                                {element.title}
+                                            </Text>
+                                        </WrapItem>
+                                    </HStack>
                                 </Wrap >
-                            </Tooltip>
-                        </WrapItem >
-                    ))}
-                </Wrap>
-            </WrapItem>
-        </Wrap >
+                            </WrapItem >
+                        ))}
+                    </Wrap>
+                </WrapItem>
+                {/* tablets/phones */}
+                <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} >
+                    <Wrap pt={30} h="100%"
+                        spacing='30px'
+                    >
+                        {menu.map((element) => (
+                            // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
+                            <WrapItem key={element.id} w="100%" cursor="pointer"
+                                onClick={() => {
+                                    setSelected(element.title);
+                                    navigate(element.path);
+                                }}>
+                                <Tooltip hasArrow label={element.title}
+                                    placement='right-end' fontSize={20}>
+                                    <Wrap align="center" justify="center"
+                                        w="80%" spacing='20px' >
+                                        <WrapItem>
+                                            <Icon as={BsDot} fontSize="3xl"
+                                                opacity={(selected === element.title) ? "1" : "0"}
+                                            />
+
+                                            <Icon as={element.icon} w={6} h={6} />
+                                        </WrapItem>
+                                    </Wrap >
+                                </Tooltip>
+                            </WrapItem >
+                        ))}
+                    </Wrap>
+                </WrapItem>
+            </Wrap >
+        </Flex>
         {/* phones */}
         < Box
             h="43px"
@@ -176,7 +179,7 @@ export default function NavBar() {
             backdropBlur="2px"
             zIndex={100}
             fontWeight={"bold"}
-            position="absolute"
+            position="fixed"
             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }
             }
         >
