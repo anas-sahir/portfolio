@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Particles from "react-tsparticles";
 import useColor from "../../utils/useColor";
 
 export default function Background() {
   const { pick } = useColor();
-  return (
-    <Particles zIndex={1}
+  const [showParticles, setShowParticles] = useState(window.localStorage.getItem("ballons"));
+  return (<>
+    {showParticles === "true" && <Particles zIndex={1}
       params={{
         particles: {
           number: {
@@ -14,9 +15,7 @@ export default function Background() {
           size: {
             value: (window.innerWidth + window.innerHeight) / 400,
           },
-          color:
-            pick("#4a8cff", "#2bfafa")
-          ,
+          color: pick("#4a8cff", "#2bfafa"),
           move: {
             direction: "none",
             enable: true,
@@ -47,6 +46,6 @@ export default function Background() {
         // },
       }}
       height="100vh"
-    />
+    />}</>
   );
 }

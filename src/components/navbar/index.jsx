@@ -10,6 +10,7 @@ import {
     HStack,
     Tooltip,
     Flex,
+    Divider,
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/avatar.jpg";
@@ -18,10 +19,12 @@ import {
     BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
     BsPencilSquare, BsChatLeftText, BsHouseDoor
 } from "react-icons/bs";
+import { CgOptions } from "react-icons/cg";
 import routes from "../../configs/routes";
 import { getCurrentPage, getPageIcon } from "../../handlers/index.jsx";
 import navBarMenu from "../../configs/navbar";
 import DrawerMenu from "./drawerMenu";
+import Configurations from "../configurations";
 
 export default function NavBar() {
     let [selected, setSelected] = useState(getCurrentPage());
@@ -73,17 +76,34 @@ export default function NavBar() {
             // backgroundColor={pick("gray.300", "#15232D")}
             // display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
             >
-                <WrapItem
-                    // h="10px"
-                    pt={5}
-                    pl={5}
-                >
-                    <Box _hover={{ transform: "scale(1.2) rotate(30deg)" }}
-                        transition="1s"
+                <Flex flexDirection={"row"} w="100%">
+                    <WrapItem
+                        // h="10px"
+                        pt={5}
+                        pl={5}
+                        w="50%"
+                    // bgColor="red"
                     >
-                        <ToggleDarkMode />
-                    </Box>
-                </WrapItem>
+                        <Box _hover={{ transform: "scale(1.5) " }}
+                            transition="1s">
+                            {/* <CgOptions cursor="pointer" /> */}
+                            <Configurations />
+                        </Box>
+                    </WrapItem>
+                    {/* <WrapItem
+                        // h="10px"
+                        pt={5}
+                        pr={5}
+                        flexDirection="row-reverse"
+                        w="50%"
+                    >
+                        <Box _hover={{ transform: "scale(1.2) rotate(30deg)" }}
+                            transition="1s"
+                        >
+                            <ToggleDarkMode />
+                        </Box>
+                    </WrapItem> */}
+                </Flex>
                 <WrapItem w="100%" >
                     <Box w="100%" align="center"  >
                         <Avatar size={"2xl"} src={logo}
@@ -98,9 +118,10 @@ export default function NavBar() {
                             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} />
                     </Box>
                 </WrapItem>
+                <Divider pt={15} />
                 {/* computers/laptops */}
                 <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
-                    <Wrap pt={30}
+                    <Wrap pt={15}
                         spacing='30px'
                     >
                         {menu.map((element) => (
@@ -114,8 +135,10 @@ export default function NavBar() {
                                     setSelected(element.title);
                                     navigate(element.path);
                                 }}
+                                _hover={{ transform: "scale(1.2) " }}
+                                transition="1s"
                             >
-                                <Wrap spacing='20px'>
+                                <Wrap spacing='20px' >
                                     <HStack>
                                         <WrapItem alignItems="center">
                                             {/* {(icon === "home")
@@ -151,7 +174,10 @@ export default function NavBar() {
                                 onClick={() => {
                                     setSelected(element.title);
                                     navigate(element.path);
-                                }}>
+                                }}
+                                _hover={{ transform: "scale(1.5) " }}
+                                transition="1s"
+                            >
                                 <Tooltip hasArrow label={element.title}
                                     placement='right-end' fontSize={20}>
                                     <Wrap align="center" justify="center"

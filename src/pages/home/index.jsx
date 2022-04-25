@@ -39,7 +39,7 @@ export default function Home() {
             <Flex position="absolute"
                 top={{ xxl: 0, xl: 0, lg: 0, md: 0, sm: "43px", base: "43px" }}
                 right={0}
-                width="100%"
+                w={{ xxl: "85%", xl: "85%", lg: "85%", md: "85%", sm: "100%", base: "100%" }}
                 align="center"
                 flexDirection={"row-reverse"}
                 color={clr}

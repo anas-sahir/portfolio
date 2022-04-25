@@ -1,4 +1,4 @@
-import { Flex, Button } from '@chakra-ui/react';
+import { Flex, Button, Text } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -56,24 +56,28 @@ export default function TextEditor() {
                         ? "Une erreur s'est produite, veuillez réessayer ultérieurement"
                         : "Envoyer"}
             </Button>
-            <ReactQuill theme='snow'
-                placeholder="write something amazing..."
-
-                style={{
-                    background: pick(
-                        "rgba(209, 218, 228, 0.93)",
-                        "rgba(21, 38, 49, 0.96)"),
-                    height: "200px",
-                    minHeight: window.innerHeight * 0.4,
-                    maxHeight: window.innerHeight * 0.5,
-                    maxWidth: window.innerWidth * 0.8,
-                    color: pick("gray.200", "white"),
-                    paddingBottom:"44px"
-                }}
-                modules={TextEditor.modules}
-                formats={TextEditor.formats}
-                onChange={handleBody}
-            />
+            <div className="ql-editor" style={{
+                minHeight: "130px",
+                maxHeight: window.innerHeight - 200,
+                // backgroundColor:"red"
+            }}>
+                <ReactQuill theme='snow'
+                    placeholder="write something amazing..."
+                    style={{
+                        background: pick(
+                            "rgba(209, 218, 228, 0.96)",
+                            "rgba(209, 218, 228, 0.96)"),
+                        // minHeight: window.innerHeight * 0.4,
+                        // maxHeight: window.innerHeight * 0.5,
+                        // padding: "50px",
+                        // color: "black",
+                        maxWidth: window.innerWidth * 0.8,
+                    }}
+                    modules={TextEditor.modules}
+                    formats={TextEditor.formats}
+                    onChange={handleBody}
+                />
+            </div>
             {/* <div className='ql-snow'>
             <div className='ql-editor' dangerouslySetInnerHTML={{ __html: body }} />
         </div> */}

@@ -26,8 +26,8 @@ export default extendTheme({
     },
   },
   config: {
-    useSystemColorMode: true,
-    // initialColorMode: "light",
+    // useSystemColorMode: true,
+    // initialColorMode: window.localStorage.getItem('chakra-ui-color-mode'),
   },
   fonts: {
     body: "'baloo 2', sans-serif",

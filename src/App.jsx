@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Background from "./components/background";
+import Background from "./components/particles";
 import Home from "./pages/home";
 import CV from "./pages/cv";
 import Formation from "./pages/formation";
@@ -10,6 +10,7 @@ import FeedBack from "./pages/feedback";
 import NavBar from './components/navbar';
 import routes from './configs/routes';
 import Footer from './components/footer';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (

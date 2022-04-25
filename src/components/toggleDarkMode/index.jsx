@@ -6,9 +6,10 @@ import { RiSunFill } from "react-icons/ri"
 export default function ToggleDarkMode() {
     const { toggle, pick } = useColor();
     return (
-        <Icon onClick={toggle}
+        <Icon cursor="pointer"
+            onClick={toggle}
             as={pick(BsFillMoonFill, RiSunFill)}
-            color={pick("gray.700", "orange.300")}
+        // color={pick("gray.700", "orange.300")}
         />
     );
 }
