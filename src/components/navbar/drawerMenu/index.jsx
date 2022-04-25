@@ -4,10 +4,6 @@ import {
   DrawerContent, DrawerCloseButton, useDisclosure,
   Icon, Avatar, Wrap, WrapItem, HStack,
 } from "@chakra-ui/react";
-import logo from "../../../assets/avatar.jpg";
-import { useNavigate } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
-import ToggleDarkMode from "../../toggleDarkMode";
 import {
   BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
   BsPencilSquare, BsChatLeftText, BsHouseDoor
@@ -16,6 +12,11 @@ import { getCurrentPage } from "../../../handlers/index";
 import useColor from "../../../utils/useColor";
 import navBarMenu from "../../../configs/navbar";
 import routes from "../../../configs/routes";
+import logo from "../../../assets/avatar.jpg";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineMenu } from "react-icons/ai";
+import ToggleDarkMode from "../../toggleDarkMode";
+import Configurations from "../../configurations";
 
 export default function DrawerMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,7 +39,7 @@ export default function DrawerMenu() {
       <DrawerContent>
         <DrawerCloseButton />
         <DrawerHeader >
-          <ToggleDarkMode />
+          <Configurations />
         </DrawerHeader>
         <DrawerHeader align={"center"} >
           <Avatar size={"xl"} src={logo} />
@@ -51,12 +52,12 @@ export default function DrawerMenu() {
               // <Dash key={element.id} icon={element.icon}
               //     title={element.title} navigateTo={element.path}
               // />
-              <WrapItem key={element.id} w="100%" 
-              cursor="pointer"
-              onClick={() => {
-                setSelected(element.title);
-                navigate(element.path);
-              }} >
+              <WrapItem key={element.id} w="100%"
+                cursor="pointer"
+                onClick={() => {
+                  setSelected(element.title);
+                  navigate(element.path);
+                }} >
                 <Wrap
                   spacing='20px'
                 >
