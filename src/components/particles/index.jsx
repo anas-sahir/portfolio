@@ -4,7 +4,7 @@ import useColor from "../../utils/useColor";
 
 export default function Background() {
   const { pick } = useColor();
-  const [showParticles, setShowParticles] = useState(window.localStorage.getItem("ballons"));
+  const showParticles = window.localStorage.getItem("ballons");
   return (<>
     {showParticles === "true" && <Particles zIndex={1}
       params={{

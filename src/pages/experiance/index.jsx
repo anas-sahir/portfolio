@@ -1,13 +1,13 @@
-import { Flex, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Image, Text, Box, Center, HStack } from "@chakra-ui/react";
 import bgPFE from "../../assets/bgPFE.png";
 
 export default function Experaince() {
     const menu = [
-        { "id":1, "title": "PFE", "context": bgPFE },
-        { "id":2, "title": "PFE", "context": bgPFE },
-        { "id":3, "title": "PFE", "context": bgPFE },
-        // { "id":4, "title": "PFE4", "context": bgPFE },
-        // { "id":5, "title": "PFE5", "context": bgPFE },
+        { "id": 1, "title": "PFE1", "context": bgPFE },
+        { "id": 2, "title": "PFE2", "context": bgPFE },
+        { "id": 3, "title": "PFE3", "context": bgPFE },
+        // { "id": 4, "title": "PFE4", "context": bgPFE },
+        // { "id": 5, "title": "PFE5", "context": bgPFE },
         // { "id":6, "title": "Game", "context": "Game" },
     ];
     return (
@@ -24,31 +24,40 @@ export default function Experaince() {
         // mb={65}
         // flexDirection="column"
         >
-            {/* <Grid
-                gap={65} w="95%" h="90%"
-                justifyItems={"center"}
-                alignItems="center"
-                templateColumns={{
-                    xxl: "repeat(" + ((menu.length >= 3) ? 3 : menu.length % 3) + ", 1fr)",
-                    xl: "repeat(" + ((menu.length >= 3) ? 3 : menu.length % 3) + ", 1fr)",
-                    // xl: "repeat(3, 1fr)",
-                    lg: "repeat(2, 1fr)", md: "repeat(2, 1fr)", sm: "repeat(1, 1fr)",
-                    base: "repeat(1, 1fr)"
-                }}
+            <Flex w="95%" minH="90%"
+                justify="center" align={"center"} gap={50}
+                // gridTemplateColumns={{
+                //     xxl: "repeat(" + ((menu.length >= 3) ? 3 : menu.length % 3) + ", 1fr)",
+                //     xl: "repeat(" + ((menu.length >= 3) ? 3 : menu.length % 3) + ", 1fr)",
+                //     // xl: "repeat(3, 1fr)",
+                //     lg: "repeat(2, 1fr)", md: "repeat(2, 1fr)", sm: "repeat(1, 2fr)",
+                //     base: "repeat(1, 1fr)"
+                // }}
+                bgColor="red"
             >
                 {menu.map((element) => {
-                    return (<GridItem key={element.id} maxWidth={"400px"} minWidth={"200px"}>
-                        <Flex>
-                            <Image src={element.context} fit="cover" borderRadius={"20px"} />
+                    return (
+                        <Flex key={element.id} flexDirection="column"
+                            // maxWidth={"400px"} minWidth={"200px"}
+                            // maxHeight={"150px"} minHeight={"300px"}
+                            // w={{ xxl: "450px", xl: "330px", lg: "350px", md: "280px", sm: "200px", base: "180px" }}
+                            // h={{ xxl: "400px", xl: "300px", lg: "325px", md: "220px", sm: "150px", base: "100px" }}
+                            // mr={23}
+                            // ml={23}
+                            bgColor={"green.400"}
+                        >
+                            <Flex >
+                                <Image src={element.context} borderRadius={"20px"} />
+                            </Flex>
+                            <Flex pt={3} pb={3} justify="center" >
+                                <Text w="80%" align={"center"} fontWeight={"bold"} >
+                                    {element.title}
+                                </Text>
+                            </Flex>
                         </Flex>
-                        <Flex pt={5} justify="center" fontWeight={"bold"} >
-                            <Text w="80%" align={"center"}>
-                                {element.title}
-                            </Text>
-                        </Flex>
-                    </GridItem>);
+                    );
                 })}
-            </Grid> */}
+            </Flex>
         </Flex >
     );
 }

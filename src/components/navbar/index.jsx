@@ -11,10 +11,12 @@ import {
     Tooltip,
     Flex,
     Divider,
+    Circle,
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
 import logo from "../../assets/avatar.jpg";
 import useColor from "../../utils/useColor";
+import color from "../../utils/color";
 import {
     BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
     BsPencilSquare, BsChatLeftText, BsHouseDoor
@@ -59,7 +61,7 @@ export default function NavBar() {
         >
         </Box>
         <Flex
-            position="absolute"
+            position="fixed"
             backdropFilter={"auto"}
             backdropBlur="3px"
             width="15%"
@@ -84,11 +86,14 @@ export default function NavBar() {
                         w="50%"
                     // bgColor="red"
                     >
-                        <Box _hover={{ transform: "scale(1.5) " }}
-                            transition="1s">
-                            {/* <CgOptions cursor="pointer" /> */}
-                            <Configurations />
-                        </Box>
+                        <Circle _hover={{ transform: "scale(1.5) ", bgColor: pick("#edf2f7", "gray.700") }}
+                            transition="1s" bg={pick("blue.200", "cyan.900")}
+                        >
+                            <Box _hover={{ color: pick("blue.500", "#2bfafa") }}
+                                transition="1s">
+                                <Configurations />
+                            </Box>
+                        </Circle>
                     </WrapItem>
                     {/* <WrapItem
                         // h="10px"
