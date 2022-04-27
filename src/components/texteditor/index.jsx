@@ -57,12 +57,14 @@ export default function TextEditor() {
                         : "Envoyer"}
             </Button>
             <div className="ql-editor" style={{
+                // overflowY: "hidden",
                 minHeight: "130px",
                 maxHeight: window.innerHeight - 200,
                 // backgroundColor:"red"
             }}>
+                
                 <ReactQuill theme='snow'
-                    placeholder="write something amazing..."
+                    placeholder="WRITE HERE"
                     style={{
                         background: pick(
                             "rgba(209, 218, 228, 0.96)",

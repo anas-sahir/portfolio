@@ -21,12 +21,12 @@ import {
     BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
     BsPencilSquare, BsChatLeftText, BsHouseDoor
 } from "react-icons/bs";
-import { CgOptions } from "react-icons/cg";
 import routes from "../../configs/routes";
 import { getCurrentPage, getPageIcon } from "../../handlers/index.jsx";
 import navBarMenu from "../../configs/navbar";
 import DrawerMenu from "./drawerMenu";
 import Configurations from "../configurations";
+import Scrollbars from 'react-custom-scrollbars';
 
 export default function NavBar() {
     let [selected, setSelected] = useState(getCurrentPage());
@@ -70,30 +70,19 @@ export default function NavBar() {
         >
 
             <Wrap
-                // width="15%"
                 zIndex={100}
                 fontWeight={"bold"}
-                position="absolute"
+                position="relative"
                 letterSpacing={"wide"}
-            // backgroundColor={pick("gray.300", "#15232D")}
-            // display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
+                w="100%"
             >
-                <Flex flexDirection={"row"} w="100%">
+                <Flex flexDirection={"row"} >
                     <WrapItem
-                        // h="10px"
                         pt={5}
                         pl={5}
                         w="50%"
-                    // bgColor="red"
                     >
-                        <Circle _hover={{ transform: "scale(1.5) ", bgColor: pick("#edf2f7", "gray.700") }}
-                            transition="1s" bg={pick("blue.200", "cyan.900")}
-                        >
-                            <Box _hover={{ color: pick("blue.500", "#2bfafa") }}
-                                transition="1s">
-                                <Configurations />
-                            </Box>
-                        </Circle>
+                        <Configurations />
                     </WrapItem>
                     {/* <WrapItem
                         // h="10px"
@@ -109,7 +98,7 @@ export default function NavBar() {
                         </Box>
                     </WrapItem> */}
                 </Flex>
-                <WrapItem w="100%" >
+                <WrapItem w="100%"  >
                     <Box w="100%" align="center"  >
                         <Avatar size={"2xl"} src={logo}
                             display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
@@ -125,7 +114,8 @@ export default function NavBar() {
                 </WrapItem>
                 <Divider pt={15} />
                 {/* computers/laptops */}
-                <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }} >
+                <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }}
+                >
                     <Wrap pt={15}
                         spacing='30px'
                     >
@@ -169,10 +159,10 @@ export default function NavBar() {
                     </Wrap>
                 </WrapItem>
                 {/* tablets/phones */}
-                <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} >
-                    <Wrap pt={30} h="100%"
-                        spacing='30px'
-                    >
+                <WrapItem display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }}
+                    w="100%">
+                    {/* <Scrollbars style={{ width: 120, height: 300 }}> */}
+                    <Wrap pt={30} spacing='30px' >
                         {menu.map((element) => (
                             // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
                             <WrapItem key={element.id} w="100%" cursor="pointer"
@@ -199,9 +189,10 @@ export default function NavBar() {
                             </WrapItem >
                         ))}
                     </Wrap>
+                    {/* </Scrollbars> */}
                 </WrapItem>
             </Wrap >
-        </Flex>
+        </Flex >
         {/* phones */}
         < Box
             h="43px"

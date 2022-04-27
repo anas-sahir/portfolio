@@ -8,7 +8,7 @@ export default function Formation() {
             mt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "43px", base: "43px" }}
             w="85%"
             letterSpacing={"wide"}
-            zIndex={10}>
+            zIndex={10} >
             formation page
         </Flex >
     );

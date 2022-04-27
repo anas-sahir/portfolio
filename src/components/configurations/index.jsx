@@ -6,18 +6,13 @@ import {
     ModalContent,
     ModalOverlay,
     ModalHeader,
-    List,
-    ListIcon,
-    ListItem,
     FormControl,
     FormLabel,
     Switch,
     SimpleGrid,
-    FormErrorIcon,
+    Circle,
+    Box,
 } from "@chakra-ui/react";
-import { Divider } from "antd";
-import { FormCheck } from "react-bootstrap";
-import FormCheckInput from "react-bootstrap/esm/FormCheckInput";
 import { CgOptions } from "react-icons/cg";
 import useColor from "../../utils/useColor";
 
@@ -25,9 +20,17 @@ export default function Configurations() {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { toggle, pick } = useColor();
     return (<>
-        <CgOptions cursor="pointer" onClick={onOpen} />
-
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Circle _hover={{ transform: "scale(1.5) ", bgColor: pick("#edf2f7", "gray.700") }}
+            transition="1s" bg={pick("blue.200", "cyan.900")} onClick={onOpen} cursor="pointer"
+            size={"fit-content"}
+        >
+            <Box _hover={{ color: pick("blue.500", "#2bfafa") }}
+                transition="1s" padding={2}
+            >
+                <CgOptions />
+            </Box>
+        </Circle>
+        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>Configurations</ModalHeader>
