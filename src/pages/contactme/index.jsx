@@ -12,10 +12,8 @@ export default function ContactMe() {
 
     return (
         <Flex
-            ml={{ xxl: "15%", xl: "15%", lg: "15%", md: "15%", sm: "0%", base: "0%" }}
-            mt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "43px", base: "43px" }}
             h={window.innerHeight}
-            w={{ xxl: "85%", xl: "85%", lg: "85%", md: "85%", sm: "100%", base: "100%" }}
+            w="100%"
             zIndex={11}
             align="center"
             justify="center"

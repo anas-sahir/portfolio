@@ -14,58 +14,54 @@ import {
     Circle,
 } from "@chakra-ui/react";
 import { useNavigate } from 'react-router-dom';
-import logo from "../../assets/avatar.jpg";
+import logo from "../../assets/svg/undraw_male_avatar.svg";
 import useColor from "../../utils/useColor";
 import color from "../../utils/color";
 import {
     BsInfoCircle, BsBookHalf, BsCodeSlash, BsDot,
     BsPencilSquare, BsChatLeftText, BsHouseDoor
 } from "react-icons/bs";
-import routes from "../../configs/routes";
+import routes from "../../settings/routes";
 import { getCurrentPage, getPageIcon } from "../../handlers/index.jsx";
-import navBarMenu from "../../configs/navbar";
-import DrawerMenu from "./drawerMenu";
-import Configurations from "../configurations";
+import navBarMenu from "../../settings/navbar";
+import AppSidebar from "./sidebar";
+import Settings from "../settings";
 import Scrollbars from 'react-custom-scrollbars';
+import navbarSettings from "./conf";
 
 export default function NavBar() {
     let [selected, setSelected] = useState(getCurrentPage());
     const { pick } = useColor();
     const navigate = useNavigate();
-    const menu = [
-        { id: 1, icon: BsHouseDoor, title: navBarMenu.home, path: routes.home },
-        { id: 2, icon: BsInfoCircle, title: navBarMenu.cv, path: routes.cv },
-        { id: 3, icon: BsBookHalf, title: navBarMenu.formation, path: routes.formation },
-        { id: 4, icon: BsCodeSlash, title: navBarMenu.experiance, path: routes.experiance },
-        { id: 5, icon: BsChatLeftText, title: navBarMenu.contact, path: routes.contact },
-        { id: 6, icon: BsPencilSquare, title: navBarMenu.feedback, path: routes.feedback },
-    ];
 
     return (<>
-        <Box width="15%"
+        <Box
+            w={{ lg: navbarSettings.conf.width, md: navbarSettings.conf.smallWidth }}
             h="100%"
             backgroundColor={pick("gray.300", "#15232D")}
             opacity={0.8}
             position="fixed"
-            display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
+            display={{ md: "flex", base: "none" }}
             onLoadStart={() => { setSelected(getCurrentPage()) }}
         >
         </Box>
+        {/* mobile */}
         <Box width="100%"
             zIndex={90}
-            h="43px"
+            h={navbarSettings.conf.height}
             backgroundColor={pick("gray.300", "#15232D")}
             opacity={0.8}
             position="fixed"
-            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "flex" }}
+            display={{ md: "none", base: "flex" }}
         >
         </Box>
         <Flex
+            zIndex={100}
             position="fixed"
             backdropFilter={"auto"}
             backdropBlur="3px"
-            width="15%"
-            display={{ xxl: "flex", xl: "flex", lg: "flex", md: "flex", sm: "none", base: "none" }}
+            w={{ lg: navbarSettings.conf.width, md: navbarSettings.conf.smallWidth }}
+            display={{ md: "flex", base: "none" }}
             height="100%"
         >
 
@@ -75,32 +71,16 @@ export default function NavBar() {
                 position="relative"
                 letterSpacing={"wide"}
                 w="100%"
+                overflow={"hidden"}
             >
                 <Flex flexDirection={"row"} >
-                    <WrapItem
-                        pt={5}
-                        pl={5}
-                        w="50%"
-                    >
-                        <Configurations />
+                    <WrapItem pt={5} pl={5} w="50%">
+                        <Settings />
                     </WrapItem>
-                    {/* <WrapItem
-                        // h="10px"
-                        pt={5}
-                        pr={5}
-                        flexDirection="row-reverse"
-                        w="50%"
-                    >
-                        <Box _hover={{ transform: "scale(1.2) rotate(30deg)" }}
-                            transition="1s"
-                        >
-                            <ToggleDarkMode />
-                        </Box>
-                    </WrapItem> */}
                 </Flex>
-                <WrapItem w="100%"  >
-                    <Box w="100%" align="center"  >
-                        <Avatar size={"2xl"} src={logo}
+                <WrapItem w="100%">
+                    <Box w="100%" align="center" px={{ lg: "50px", md: "30px" }} >
+                        {/* <Avatar size={"2xl"} src={logo}
                             display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
                         <Avatar size={"xl"} src={logo}
                             display={{ xxl: "none", xl: "none", lg: "flex", md: "none", sm: "none", base: "none" }} />
@@ -109,17 +89,22 @@ export default function NavBar() {
                         <Avatar size={"md"} src={logo}
                             display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "none" }} />
                         <Avatar size={"sm"} src={logo}
-                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} />
+                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} /> */}
+                        <Avatar src={logo} boxSize="fit-content" />
+                        {/* size={{ xxl: "2xl", xl: "2xl", lg: "xl", md: "lg", sm: "md", base: "sm" }}  */}
                     </Box>
                 </WrapItem>
-                <Divider pt={15} />
+
+                {/* TODO divider */}
+                {/* <Box mt="30px" h="1px" w="100%" bgColor={"red"} /> */}
+
                 {/* computers/laptops */}
                 <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }}
                 >
-                    <Wrap pt={15}
+                    <Wrap pt={"30px"}
                         spacing='30px'
                     >
-                        {menu.map((element) => (
+                        {navbarSettings.link.map((element) => (
                             // <Dash key={element.id} icon={element.icon}
                             //     title={element.title} navigateTo={element.path}
                             // />
@@ -132,23 +117,22 @@ export default function NavBar() {
                                 }}
                                 _hover={{ transform: "scale(1.2) " }}
                                 transition="1s"
+                                color={(selected === element.title) && "#6C63FF"}
+                                pl="30px"
                             >
-                                <Wrap spacing='20px' >
+                                <Wrap spacing='20px'>
                                     <HStack>
                                         <WrapItem alignItems="center">
-                                            {/* {(icon === "home")
-                        ? <AiOutlineHome />
-                        : "a"} */}
-
-                                            <Icon as={BsDot} fontSize="3xl"
+                                            {/* <Icon as={BsDot} fontSize="3xl"
                                                 opacity={(selected === element.title) ? "1" : "0"}
-                                            />
+                                            /> */}
                                             <Icon as={element.icon} />
                                         </WrapItem>
                                         <WrapItem >
                                             <Text
-                                                bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
-                                                bgClip='text'>
+                                            // bgGradient={pick('linear(to-r, #242C37, #76869C)', 'linear(to-r, #E9EFF7, #475464)')}
+                                            // bgClip='text'
+                                            >
                                                 {element.title}
                                             </Text>
                                         </WrapItem>
@@ -163,7 +147,7 @@ export default function NavBar() {
                     w="100%">
                     {/* <Scrollbars style={{ width: 120, height: 300 }}> */}
                     <Wrap pt={30} spacing='30px' >
-                        {menu.map((element) => (
+                        {navbarSettings.link.map((element) => (
                             // <DashTwo key={element.id} icon={element.icon} navigateTo={element.path}/>
                             <WrapItem key={element.id} w="100%" cursor="pointer"
                                 onClick={() => {
@@ -193,9 +177,9 @@ export default function NavBar() {
                 </WrapItem>
             </Wrap >
         </Flex >
-        {/* phones */}
+        {/* mobile */}
         < Box
-            h="43px"
+            h={navbarSettings.conf.height}
             w="100%"
             backdropFilter={"auto"}
             backdropBlur="2px"
@@ -217,7 +201,7 @@ export default function NavBar() {
                     </Text>
                 </Flex>
                 <Flex w={1 / 10} h="100%" align={"center"}>
-                    <DrawerMenu />
+                    <AppSidebar />
                 </Flex >
             </HStack>
         </Box >

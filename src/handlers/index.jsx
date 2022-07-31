@@ -5,34 +5,39 @@ import {
     BsPencilSquare, BsHouseDoor, BsChatLeftText
 } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
-import socialMedia from "../configs/socialMedia";
-import routes from '../configs/routes';
-import navBarMenu from '../configs/navbar';
+import socialMedia from "../settings/socialMedia";
+import routes from '../settings/routes';
+import navBarMenu from '../settings/navbar';
 
-export function ToAcceuil() {
-    const navigate = useNavigate();
-    navigate("/");
-}
+// export function ToAcceuil() {
+//     const navigate = useNavigate();
+//     navigate(routes.home, { replace: true });
+// }
 
-export function ToCV() {
-    const navigate = useNavigate();
-    navigate("/cv");
-}
+// export function ToCV() {
+//     const navigate = useNavigate();
+//     navigate(routes.cv, { replace: true });
+// }
 
-export function ToFormation() {
-    const navigate = useNavigate();
-    navigate("/formation");
-}
+// export function ToFormation() {
+//     const navigate = useNavigate();
+//     navigate(routes.formation, { replace: true });
+// }
 
-export function ToExperiance() {
-    const navigate = useNavigate();
-    navigate("/experiance");
-}
+// export function ToExperiance() {
+//     const navigate = useNavigate();
+//     navigate(routes.experience, { replace: true });
+// }
 
-export function ToContactMe() {
-    const navigate = useNavigate();
-    navigate("/contactme");
-}
+// export function ToContactMe() {
+//     const navigate = useNavigate();
+//     navigate(routes.contact, { replace: true });
+// }
+
+// export function ToFeedback() {
+//     const navigate = useNavigate();
+//     navigate(routes.feedback, { replace: true });
+// }
 
 export function handleClick(icon) {
     switch (icon) {

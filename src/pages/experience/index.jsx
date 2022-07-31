@@ -1,9 +1,9 @@
 import { Flex, Grid, GridItem, Image, Text, Box, Center, HStack, SimpleGrid } from "@chakra-ui/react";
-import bgPFE from "../../assets/bgPFE.png";
-import bgWordle from "../../assets/bgWordle.png";
+import bgPFE from "../../assets/img/bgPFE.png";
+import bgWordle from "../../assets/img/bgWordle.png";
 import { Scrollbars } from 'react-custom-scrollbars';
 
-export default function Experaince() {
+export default function Experience() {
     const menu = [
         { "id": 1, "title": "Projet de Fin d'Etude", "context": bgPFE },
         { "id": 2, "title": "Jeux Wordle", "context": bgWordle },
@@ -15,10 +15,8 @@ export default function Experaince() {
     return (
 
         <Flex
-            ml={{ xxl: "15%", xl: "15%", lg: "15%", md: "15%", sm: "0%", base: "0%" }}
-            mt={{ xxl: "0%", xl: "0%", lg: "0%", md: "0%", sm: "43px", base: "43px" }}
             pt="20px"
-            w={{ xxl: "85%", xl: "85%", lg: "85%", md: "85%", sm: "100%", base: "100%" }}
+            w="100%"
             letterSpacing={"widest"}
             // align="center"
             justify="center"

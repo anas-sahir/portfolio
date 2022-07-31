@@ -1,16 +1,17 @@
-import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Background from "./components/particles";
+import NavBar from './components/navbar';
 import Home from "./pages/home";
 import CV from "./pages/cv";
 import Formation from "./pages/formation";
-import Experiance from "./pages/experiance";
+import Experience from "./pages/experience";
 import ContactMe from "./pages/contactme";
 import FeedBack from "./pages/feedback";
-import NavBar from './components/navbar';
-import routes from './configs/routes';
-import Footer from './components/footer';
-import { useEffect, useState } from 'react';
+import Test from './pages/test';
+import routes from './settings/routes';
+import { Box } from '@chakra-ui/react';
+import './assets/style/css/App.css';
+import navbarSettings from "./components/navbar/conf";
 
 function App() {
   return (
@@ -18,16 +19,26 @@ function App() {
       <Router>
         <Background />
         <NavBar />
-        <Routes >
-          <Route path={routes.home} element={<Home />} />
-          <Route path={routes.cv} element={<CV />} />
-          <Route path={routes.formation} element={<Formation />} />
-          <Route path={routes.experiance} element={<Experiance />} />
-          <Route path={routes.contact} element={<ContactMe />} />
-          <Route path={routes.feedback} element={<FeedBack />} />
-        </Routes>
+        <Box zIndex={5} pl={{
+          md: navbarSettings.conf.width,
+          sm: "0px"
+        }}
+          pt={{
+            md: "0px",
+            sm: navbarSettings.conf.height
+          }}
+        >
+          <Routes >
+            <Route path={routes.home} element={<Home />} />
+            <Route path={routes.cv} element={<CV />} />
+            <Route path={routes.formation} element={<Formation />} />
+            <Route path={routes.experience} element={<Experience />} />
+            <Route path={routes.contact} element={<ContactMe />} />
+            <Route path={routes.feedback} element={<FeedBack />} />
+            <Route path={routes.test} element={<Test />} />
+          </Routes>
+        </Box>
       </Router>
-      {/* <Footer /> */}
     </div>
   );
 }

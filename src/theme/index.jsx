@@ -30,8 +30,8 @@ export default extendTheme({
     initialColorMode: window.localStorage.getItem('chakra-ui-color-mode'),
   },
   fonts: {
-    body: "'baloo 2', sans-serif",
-    heading: "'Montserrat', sans-serif",
+    body: "Poppins, 'baloo 2', sans-serif",
+    heading: "Poppins, 'Montserrat', sans-serif",
   },
 
   styles: {
@@ -84,6 +84,14 @@ export default extendTheme({
   //       solid: (props) => ({
   //         bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
   //       }),
+  //     },
+  //   },
+  // },
+
+  // components: {
+  //   Text: {
+  //     baseStyle: {
+  //       fontFamily: "Poppins",
   //     },
   //   },
   // },
