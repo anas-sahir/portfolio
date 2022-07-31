@@ -2,9 +2,10 @@ const routes = {
     "home": "/portfolio/",
     "cv": "/portfolio/cv",
     "formation": "/portfolio/formation",
-    "experiance": "/portfolio/experiance",
+    "experience": "/portfolio/experience",
     "contact": "/portfolio/contact",
     "feedback": "/portfolio/feedback",
+    "test": "/portfolio/test",
 };
 
-module.exports = routes;
+export default routes;

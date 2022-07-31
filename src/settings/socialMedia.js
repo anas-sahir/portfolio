@@ -7,4 +7,4 @@ const socialMedia = {
     "gmail": "mailto:anas.sahir1@gmail.com?subject=Email from client&body=Enter your email here\n\n\n"
 }
 
-module.exports = socialMedia;
+export default socialMedia;
