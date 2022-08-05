@@ -63,6 +63,7 @@ export default function NavBar() {
             w={{ lg: navbarSettings.conf.width, md: navbarSettings.conf.smallWidth }}
             display={{ md: "flex", base: "none" }}
             height="100%"
+            overflow="hidden"
         >
 
             <Wrap
@@ -71,32 +72,18 @@ export default function NavBar() {
                 position="relative"
                 letterSpacing={"wide"}
                 w="100%"
-                overflow={"hidden"}
+                overflowX="auto"
             >
                 <Flex flexDirection={"row"} >
-                    <WrapItem pt={5} pl={5} w="50%">
+                    <WrapItem pt={5} pl={5}>
                         <Settings />
                     </WrapItem>
                 </Flex>
                 <WrapItem w="100%">
                     <Box w="100%" align="center" px={{ lg: "50px", md: "30px" }} >
-                        {/* <Avatar size={"2xl"} src={logo}
-                            display={{ xxl: "flex", xl: "flex", lg: "none", md: "none", sm: "none", base: "none" }} />
-                        <Avatar size={"xl"} src={logo}
-                            display={{ xxl: "none", xl: "none", lg: "flex", md: "none", sm: "none", base: "none" }} />
-                        <Avatar size={"lg"} src={logo}
-                            display={{ xxl: "none", xl: "none", lg: "none", md: "flex", sm: "none", base: "none" }} />
-                        <Avatar size={"md"} src={logo}
-                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "flex", base: "none" }} />
-                        <Avatar size={"sm"} src={logo}
-                            display={{ xxl: "none", xl: "none", lg: "none", md: "none", sm: "none", base: "flex" }} /> */}
                         <Avatar src={logo} boxSize="fit-content" />
-                        {/* size={{ xxl: "2xl", xl: "2xl", lg: "xl", md: "lg", sm: "md", base: "sm" }}  */}
                     </Box>
                 </WrapItem>
-
-                {/* TODO divider */}
-                {/* <Box mt="30px" h="1px" w="100%" bgColor={"red"} /> */}
 
                 {/* computers/laptops */}
                 <WrapItem display={{ xxl: "flex", xl: "flex", lg: "flex", md: "none", sm: "none", base: "none" }}
