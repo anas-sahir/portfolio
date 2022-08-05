@@ -53,7 +53,7 @@ export default function AppSidebar() {
                 <Wrap
                   spacing='20px'
                 >
-                  <HStack color='red'>
+                  <HStack>
                     <WrapItem alignItems="center">
                       <Icon as={BsDot} fontSize="3xl"
                         opacity={(selected === element.title) ? "1" : "0"}
